@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Suppliers</title>
+</head>
+<body>
+  <h1>Danh sách nhà cung cấp</h1>
+  <a href="/suppliers/new">➕ Thêm nhà cung cấp</a>
+  <ul>
+    <% suppliers.forEach(s => { %>
+      <li>
+        <%= s.name %> - <%= s.address %> - <%= s.phone %>
+        <a href="/suppliers/<%= s._id %>/edit">✏️ Sửa</a>
+        <form action="/suppliers/<%= s._id %>?_method=DELETE" method="POST" style="display:inline;">
+          <button type="submit">🗑️ Xóa</button>
+        </form>
+      </li>
+    <% }) %>
+  </ul>
+</body>
+</html>

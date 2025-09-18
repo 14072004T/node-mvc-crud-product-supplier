@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Products</title>
+</head>
+<body>
+  <h1>Danh sách sản phẩm</h1>
+  <a href="/products/new">➕ Thêm sản phẩm</a>
+  <ul>
+    <% products.forEach(p => { %>
+      <li>
+        <%= p.name %> - Giá: <%= p.price %> - SL: <%= p.quantity %> 
+        | NCC: <%= p.supplier ? p.supplier.name : "Không có" %>
+        <a href="/products/<%= p._id %>/edit">✏️ Sửa</a>
+        <form action="/products/<%= p._id %>?_method=DELETE" method="POST" style="display:inline;">
+          <button type="submit">🗑️ Xóa</button>
+        </form>
+      </li>
+    <% }) %>
+  </ul>
+  <a href="/">⬅ Trang chủ</a>
+</body>
+</html>
